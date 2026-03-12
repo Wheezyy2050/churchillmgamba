@@ -1,0 +1,64 @@
+.contact-section { padding: 120px 48px; background: var(--bg); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+
+.contact-tagline {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+.contact-tagline span { color: var(--accent); }
+.contact-sub { color: var(--muted); font-size: 13px; line-height: 1.8; margin-bottom: 48px; }
+.contact-links { display: flex; flex-direction: column; gap: 16px; }
+.contact-link {
+  display: flex; align-items: center; gap: 16px;
+  padding: 20px 24px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  text-decoration: none;
+  transition: all 0.25s;
+}
+.contact-link:hover { border-color: var(--accent); background: rgba(232,255,71,0.03); transform: translateX(8px); }
+.cl-icon { font-size: 18px; width: 24px; text-align: center; }
+.cl-info { flex: 1; }
+.cl-label { font-size: 10px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 2px; }
+.cl-val { font-size: 13px; color: var(--text); }
+.cl-arrow { color: var(--muted); font-size: 18px; transition: color 0.2s; }
+.contact-link:hover .cl-arrow { color: var(--accent); }
+
+.contact-form { display: flex; flex-direction: column; gap: 16px; }
+.form-field { display: flex; flex-direction: column; gap: 6px; }
+.form-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+.form-input, .form-textarea {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  padding: 14px 16px;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: none;
+}
+.form-input:focus, .form-textarea:focus { border-color: var(--accent); }
+.form-textarea { min-height: 120px; }
+.btn-send {
+  background: var(--accent);
+  color: #0a0a0a;
+  border: none;
+  padding: 16px 32px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.25s;
+  align-self: flex-start;
+}
+.btn-send:hover { background: #d4eb00; transform: translateY(-2px); }
+
+@media (max-width: 900px) {
+  .contact-section { padding: 80px 24px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+}
