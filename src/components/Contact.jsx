@@ -47,7 +47,7 @@ function Contact() {
               <span className="cl-icon">✉</span>
               <div className="cl-info">
                 <div className="cl-label">Email</div>
-                <div className="cl-val">churchill.mgamba@email.com</div>
+                <div className="cl-val">wheezyy65@email.com</div>
               </div>
               <span className="cl-arrow">→</span>
             </a>
