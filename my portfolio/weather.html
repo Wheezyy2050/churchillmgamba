@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skycast — Weather App</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#1a1c2e;--card:rgba(255,255,255,0.06);--border:rgba(255,255,255,0.1);--text:#fff;--muted:rgba(255,255,255,0.5);}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;min-height:100vh;padding:32px;transition:background 1s ease;}
+  body.sunny{background:linear-gradient(135deg,#1a6fc4,#2196F3,#42a5f5);}
+  body.cloudy{background:linear-gradient(135deg,#546e7a,#607d8b,#78909c);}
+  body.rainy{background:linear-gradient(135deg,#1a237e,#283593,#3949ab);}
+  body.stormy{background:linear-gradient(135deg,#212121,#37474f,#455a64);}
+  body.snowy{background:linear-gradient(135deg,#b0bec5,#cfd8dc,#eceff1);color:#1a1c2e;}
+  body.snowy .muted-text{color:rgba(0,0,0,0.5)!important;}
+  /* SEARCH */
+  .search-bar{max-width:480px;margin:0 auto 40px;display:flex;gap:12px;}
+  .search-input{flex:1;background:rgba(255,255,255,0.12);border:1px solid var(--border);color:var(--text);padding:14px 20px;border-radius:50px;font-family:'Nunito',sans-serif;font-size:15px;outline:none;backdrop-filter:blur(10px);}
+  .search-input::placeholder{color:var(--muted);}
+  .search-input:focus{background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.4);}
+  .search-btn{background:rgba(255,255,255,0.2);border:1px solid var(--border);color:var(--text);padding:14px 24px;border-radius:50px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;backdrop-filter:blur(10px);}
+  .search-btn:hover{background:rgba(255,255,255,0.3);}
+  /* MAIN CARD */
+  .weather-container{max-width:480px;margin:0 auto;}
+  .main-card{background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:24px;padding:40px;margin-bottom:16px;text-align:center;}
+  .city-name{font-size:28px;font-weight:800;margin-bottom:4px;}
+  .country{font-size:14px;color:var(--muted);margin-bottom:32px;}
+  .weather-icon{font-size:96px;margin-bottom:16px;animation:float 3s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+  .temp-display{font-size:80px;font-weight:900;line-height:1;margin-bottom:8px;}
+  .temp-display sup{font-size:36px;font-weight:600;vertical-align:top;margin-top:16px;}
+  .weather-desc{font-size:20px;font-weight:600;margin-bottom:24px;text-transform:capitalize;}
+  .temp-range{display:flex;justify-content:center;gap:24px;font-size:15px;color:var(--muted);}
+  /* UNIT TOGGLE */
+  .unit-toggle{display:flex;justify-content:center;gap:8px;margin-bottom:24px;}
+  .unit-btn{padding:6px 16px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text);font-family:'Nunito',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;}
+  .unit-btn.active{background:rgba(255,255,255,0.2);}
+  /* STATS GRID */
+  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
+  .stat-card{background:rgba(255,255,255,0.08);border:1px solid var(--border);border-radius:16px;padding:20px;backdrop-filter:blur(10px);}
+  .stat-icon{font-size:24px;margin-bottom:8px;}
+  .stat-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;}
+  .stat-value{font-size:22px;font-weight:800;}
+  .stat-unit{font-size:13px;font-weight:400;color:var(--muted);}
+  /* FORECAST */
+  .forecast-card{background:rgba(255,255,255,0.08);border:1px solid var(--border);border-radius:16px;padding:20px;backdrop-filter:blur(10px);}
+  .forecast-title{font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:16px;}
+  .forecast-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+  .forecast-row:last-child{border-bottom:none;}
+  .forecast-day{font-size:14px;font-weight:600;width:50px;}
+  .forecast-icon{font-size:22px;}
+  .forecast-desc{font-size:12px;color:var(--muted);flex:1;text-align:center;}
+  .forecast-temps{font-size:14px;font-weight:700;}
+  .forecast-lo{font-size:12px;color:var(--muted);}
+  /* CITIES */
+  .cities-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:32px;}
+  .city-chip{padding:6px 16px;border-radius:20px;background:rgba(255,255,255,0.1);border:1px solid var(--border);font-size:13px;cursor:pointer;transition:all 0.2s;}
+  .city-chip:hover{background:rgba(255,255,255,0.2);}
+  .loading{text-align:center;padding:60px;font-size:18px;opacity:0.7;}
+</style>
+</head>
+<body>
+
+<div class="search-bar">
+  <input class="search-input" type="text" id="searchInput" placeholder="Search city..." onkeydown="if(event.key==='Enter')searchCity()">
+  <button class="search-btn" onclick="searchCity()">Search</button>
+</div>
+
+<div class="cities-row">
+  <div class="city-chip" onclick="loadCity('Johannesburg')">🇿🇦 Johannesburg</div>
+  <div class="city-chip" onclick="loadCity('Cape Town')">🇿🇦 Cape Town</div>
+  <div class="city-chip" onclick="loadCity('London')">🇬🇧 London</div>
+  <div class="city-chip" onclick="loadCity('New York')">🇺🇸 New York</div>
+  <div class="city-chip" onclick="loadCity('Tokyo')">🇯🇵 Tokyo</div>
+  <div class="city-chip" onclick="loadCity('Dubai')">🇦🇪 Dubai</div>
+</div>
+
+<div class="weather-container" id="weatherContainer">
+  <div class="loading">🌍 Search for a city or click one above</div>
+</div>
+
+<script>
+const weatherData = {
+  'Johannesburg': { temp:22, feels:20, high:26, low:14, desc:'Partly Cloudy', icon:'⛅', humidity:55, wind:18, uv:6, visibility:10, pressure:1013, type:'cloudy', country:'South Africa 🇿🇦', forecast:[{day:'Mon',icon:'☀️',desc:'Sunny',hi:28,lo:15},{day:'Tue',icon:'⛅',desc:'Cloudy',hi:24,lo:13},{day:'Wed',icon:'🌧️',desc:'Rainy',hi:18,lo:10},{day:'Thu',icon:'⛅',desc:'Cloudy',hi:22,lo:12},{day:'Fri',icon:'☀️',desc:'Sunny',hi:27,lo:14}]},
+  'Cape Town':    { temp:18, feels:16, high:22, low:12, desc:'Windy & Clear', icon:'🌬️', humidity:65, wind:32, uv:5, visibility:15, pressure:1018, type:'sunny', country:'South Africa 🇿🇦', forecast:[{day:'Mon',icon:'🌤️',desc:'Breezy',hi:20,lo:12},{day:'Tue',icon:'🌧️',desc:'Rainy',hi:16,lo:10},{day:'Wed',icon:'⛈️',desc:'Stormy',hi:14,lo:9},{day:'Thu',icon:'🌤️',desc:'Clearing',hi:19,lo:11},{day:'Fri',icon:'☀️',desc:'Sunny',hi:23,lo:13}]},
+  'London':       { temp:9, feels:6, high:12, low:5, desc:'Overcast', icon:'🌫️', humidity:82, wind:22, uv:2, visibility:6, pressure:1008, type:'cloudy', country:'United Kingdom 🇬🇧', forecast:[{day:'Mon',icon:'🌧️',desc:'Drizzle',hi:10,lo:5},{day:'Tue',icon:'🌧️',desc:'Rainy',hi:8,lo:4},{day:'Wed',icon:'⛅',desc:'Cloudy',hi:11,lo:6},{day:'Thu',icon:'🌤️',desc:'Mostly Clear',hi:13,lo:7},{day:'Fri',icon:'⛅',desc:'Cloudy',hi:11,lo:5}]},
+  'New York':     { temp:4, feels:0, high:7, low:-1, desc:'Cold & Snowy', icon:'❄️', humidity:70, wind:28, uv:2, visibility:5, pressure:1020, type:'snowy', country:'United States 🇺🇸', forecast:[{day:'Mon',icon:'❄️',desc:'Snow',hi:3,lo:-3},{day:'Tue',icon:'🌨️',desc:'Flurries',hi:5,lo:-2},{day:'Wed',icon:'⛅',desc:'Cloudy',hi:8,lo:1},{day:'Thu',icon:'☀️',desc:'Sunny',hi:10,lo:2},{day:'Fri',icon:'🌤️',desc:'Clear',hi:9,lo:0}]},
+  'Tokyo':        { temp:15, feels:13, high:18, low:10, desc:'Clear Sky', icon:'☀️', humidity:45, wind:12, uv:7, visibility:20, pressure:1021, type:'sunny', country:'Japan 🇯🇵', forecast:[{day:'Mon',icon:'☀️',desc:'Sunny',hi:18,lo:10},{day:'Tue',icon:'🌤️',desc:'Mostly Sunny',hi:17,lo:9},{day:'Wed',icon:'⛅',desc:'Partly Cloudy',hi:15,lo:8},{day:'Thu',icon:'🌧️',desc:'Light Rain',hi:13,lo:7},{day:'Fri',icon:'🌤️',desc:'Clearing',hi:16,lo:9}]},
+  'Dubai':        { temp:34, feels:38, high:38, low:26, desc:'Hot & Sunny', icon:'🔆', humidity:40, wind:15, uv:10, visibility:12, pressure:1009, type:'sunny', country:'United Arab Emirates 🇦🇪', forecast:[{day:'Mon',icon:'☀️',desc:'Sunny',hi:38,lo:27},{day:'Tue',icon:'☀️',desc:'Hot',hi:39,lo:28},{day:'Wed',icon:'🌤️',desc:'Hazy',hi:36,lo:26},{day:'Thu',icon:'☀️',desc:'Sunny',hi:37,lo:27},{day:'Fri',icon:'🌤️',desc:'Partly Cloudy',hi:35,lo:25}]},
+};
+
+let currentUnit = 'C';
+let currentCity = null;
+
+function searchCity() {
+  const q = document.getElementById('searchInput').value.trim();
+  if (!q) return;
+  const match = Object.keys(weatherData).find(c => c.toLowerCase().includes(q.toLowerCase()));
+  if (match) loadCity(match);
+  else {
+    document.getElementById('weatherContainer').innerHTML = `<div class="loading">❌ City not found. Try: Johannesburg, London, Tokyo...</div>`;
+  }
+}
+
+function loadCity(city) {
+  currentCity = city;
+  document.getElementById('searchInput').value = city;
+  const data = weatherData[city];
+  document.body.className = data.type;
+  renderWeather(data, currentUnit);
+}
+
+function renderWeather(data, unit) {
+  const convert = t => unit === 'C' ? t : Math.round(t * 9/5 + 32);
+  const u = unit === 'C' ? '°C' : '°F';
+  document.getElementById('weatherContainer').innerHTML = `
+    <div class="unit-toggle">
+      <button class="unit-btn ${unit==='C'?'active':''}" onclick="setUnit('C')">°C</button>
+      <button class="unit-btn ${unit==='F'?'active':''}" onclick="setUnit('F')">°F</button>
+    </div>
+    <div class="main-card">
+      <div class="city-name">${currentCity}</div>
+      <div class="country muted-text">${data.country}</div>
+      <div class="weather-icon">${data.icon}</div>
+      <div class="temp-display">${convert(data.temp)}<sup>${u}</sup></div>
+      <div class="weather-desc">${data.desc}</div>
+      <div class="temp-range">
+        <span>↑ ${convert(data.high)}${u}</span>
+        <span>Feels like ${convert(data.feels)}${u}</span>
+        <span>↓ ${convert(data.low)}${u}</span>
+      </div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-icon">💧</div><div class="stat-label">Humidity</div><div class="stat-value">${data.humidity}<span class="stat-unit">%</span></div></div>
+      <div class="stat-card"><div class="stat-icon">💨</div><div class="stat-label">Wind Speed</div><div class="stat-value">${data.wind}<span class="stat-unit"> km/h</span></div></div>
+      <div class="stat-card"><div class="stat-icon">🌡️</div><div class="stat-label">Pressure</div><div class="stat-value">${data.pressure}<span class="stat-unit"> hPa</span></div></div>
+      <div class="stat-card"><div class="stat-icon">👁️</div><div class="stat-label">Visibility</div><div class="stat-value">${data.visibility}<span class="stat-unit"> km</span></div></div>
+    </div>
+    <div class="forecast-card">
+      <div class="forecast-title">5-Day Forecast</div>
+      ${data.forecast.map(f => `
+        <div class="forecast-row">
+          <div class="forecast-day">${f.day}</div>
+          <div class="forecast-icon">${f.icon}</div>
+          <div class="forecast-desc">${f.desc}</div>
+          <div><span class="forecast-temps">${convert(f.hi)}${u}</span> <span class="forecast-lo">/ ${convert(f.lo)}${u}</span></div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function setUnit(unit) {
+  currentUnit = unit;
+  if (currentCity) renderWeather(weatherData[currentCity], unit);
+}
+
+loadCity('Johannesburg');
+</script>
+</body>
+</html>
