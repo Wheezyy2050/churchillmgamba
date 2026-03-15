@@ -16,10 +16,8 @@
     --muted: #555555;
     --subtle: #222222;
   }
-
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-
   body {
     background: var(--bg);
     color: var(--text);
@@ -29,7 +27,6 @@
     cursor: none;
     overflow-x: hidden;
   }
-
   body::before {
     content: '';
     position: fixed;
@@ -39,7 +36,6 @@
     z-index: 1000;
     opacity: 0.3;
   }
-
   .cursor {
     position: fixed;
     width: 12px;
@@ -66,7 +62,6 @@
     transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, opacity 0.2s ease;
     opacity: 0;
   }
-
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -102,7 +97,6 @@
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--accent); }
-
   .hero {
     min-height: 100vh;
     display: grid;
@@ -195,14 +189,13 @@
   .btn-primary:hover { background: transparent; color: var(--accent); transform: translateY(-2px); }
   .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
   .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-
   .hero-right { position: relative; z-index: 1; animation: fadeIn 1s ease 0.6s both; }
   .terminal {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.03);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6);
   }
   .terminal-header {
     display: flex; align-items: center; gap: 8px;
@@ -214,7 +207,7 @@
   .dot-r { background: #ff5f57; }
   .dot-y { background: #febc2e; }
   .dot-g { background: #28c840; }
-  .terminal-title { margin-left: auto; font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+  .terminal-title { margin-left: auto; font-size: 11px; color: var(--muted); }
   .terminal-body { padding: 24px; font-size: 13px; line-height: 2; }
   .t-key { color: #888; }
   .t-str { color: var(--accent); }
@@ -223,19 +216,16 @@
   .t-bool { color: #ff79c6; }
   .t-brace { color: #555; }
   .t-line { display: block; }
-
   .stats-strip { display: flex; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .stat-item { flex: 1; padding: 32px 48px; border-right: 1px solid var(--border); }
   .stat-item:last-child { border-right: none; }
   .stat-num { font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 8px; }
   .stat-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-
   section { padding: 120px 48px; }
   .section-header { display: flex; align-items: baseline; gap: 24px; margin-bottom: 80px; }
   .section-num { font-size: 11px; color: var(--accent); letter-spacing: 0.2em; }
   .section-title { font-family: 'Syne', sans-serif; font-size: clamp(28px, 4vw, 48px); font-weight: 800; letter-spacing: -1px; line-height: 1; }
   .section-line { flex: 1; height: 1px; background: var(--border); max-width: 200px; }
-
   #skills { background: var(--surface); }
   .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; }
   .skill-card {
@@ -264,7 +254,6 @@
   .skill-bar-bg { height: 2px; background: var(--border); border-radius: 2px; overflow: hidden; }
   .skill-bar { height: 100%; background: var(--accent); border-radius: 2px; width: 0%; transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
   .skill-pct { font-size: 11px; color: var(--muted); margin-top: 8px; display: block; }
-
   .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
   .project-card {
     background: var(--surface);
@@ -308,7 +297,6 @@
   .pv-4 { background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2a 100%); }
   .pv-5 { background: linear-gradient(135deg, #0a0a0a 0%, #0a2a1a 100%); }
   .pv-num { font-family: 'Syne', sans-serif; font-size: 80px; font-weight: 800; opacity: 0.08; color: var(--accent); line-height: 1; }
-
   #experience { background: var(--surface); }
   .timeline { position: relative; padding-left: 48px; }
   .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: var(--border); }
@@ -318,7 +306,6 @@
   .tl-title { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 6px; color: var(--text); }
   .tl-company { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
   .tl-desc { color: #777; font-size: 12px; line-height: 1.9; max-width: 560px; }
-
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
   .contact-tagline { font-family: 'Syne', sans-serif; font-size: clamp(28px, 4vw, 48px); font-weight: 800; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 24px; }
   .contact-tagline span { color: var(--accent); }
@@ -338,21 +325,18 @@
   .form-input, .form-textarea { background: var(--surface); border: 1px solid var(--border); color: var(--text); font-family: 'DM Mono', monospace; font-size: 13px; padding: 14px 16px; outline: none; transition: border-color 0.2s; resize: none; }
   .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
   .form-textarea { min-height: 120px; }
-  .btn-send { background: var(--accent); color: #0a0a0a; border: none; padding: 16px 32px; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.25s; align-self: flex-start; }
+  .btn-send { background: var(--accent); color: #0a0a0a; border: none; padding: 16px 32px; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.25s; align-self: flex-start; cursor: pointer; }
   .btn-send:hover { background: #d4eb00; transform: translateY(-2px); }
-
   footer { padding: 32px 48px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--bg); }
   .footer-copy { font-size: 11px; color: var(--muted); }
   .footer-copy span { color: var(--accent); }
   .footer-up { width: 40px; height: 40px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); text-decoration: none; font-size: 18px; transition: all 0.2s; }
   .footer-up:hover { border-color: var(--accent); color: var(--accent); }
-
   @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
-
   @media (max-width: 900px) {
     nav { padding: 20px 24px; }
     .nav-links { display: none; }
@@ -371,7 +355,6 @@
 </style>
 </head>
 <body>
-
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
@@ -391,10 +374,7 @@
   <div class="hero-glow"></div>
   <div class="hero-left">
     <div class="hero-tag">Available for hire</div>
-    <h1 class="hero-name">
-      Churchill
-      <span class="line2">Mgamba.</span>
-    </h1>
+    <h1 class="hero-name">Churchill<span class="line2">Mgamba.</span></h1>
     <p class="hero-title">Web Developer &amp; Frontend Engineer</p>
     <p class="hero-desc">I build clean, performant, and accessible web experiences. Specialising in modern frontend technologies — from pixel-perfect HTML/CSS to dynamic JavaScript and robust Java backends.</p>
     <div class="hero-cta">
@@ -405,9 +385,7 @@
   <div class="hero-right">
     <div class="terminal">
       <div class="terminal-header">
-        <div class="dot dot-r"></div>
-        <div class="dot dot-y"></div>
-        <div class="dot dot-g"></div>
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
         <span class="terminal-title">churchill.json</span>
       </div>
       <div class="terminal-body">
@@ -416,12 +394,9 @@
         <span class="t-line">&nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-str">"Web Developer"</span>,</span>
         <span class="t-line">&nbsp;&nbsp;<span class="t-key">"experience"</span>: <span class="t-str">"1+ years"</span>,</span>
         <span class="t-line">&nbsp;&nbsp;<span class="t-key">"languages"</span>: <span class="t-arr">[</span></span>
-        <span class="t-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"HTML"</span>, <span class="t-str">"CSS"</span>,</span>
-        <span class="t-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"JavaScript"</span>, <span class="t-str">"Java"</span></span>
+        <span class="t-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"HTML"</span>, <span class="t-str">"CSS"</span>, <span class="t-str">"JavaScript"</span>, <span class="t-str">"Java"</span></span>
         <span class="t-line">&nbsp;&nbsp;<span class="t-arr">]</span>,</span>
-        <span class="t-line">&nbsp;&nbsp;<span class="t-key">"passion"</span>: <span class="t-str">"Building great UX"</span>,</span>
-        <span class="t-line">&nbsp;&nbsp;<span class="t-key">"open_to_work"</span>: <span class="t-bool">true</span>,</span>
-        <span class="t-line">&nbsp;&nbsp;<span class="t-key">"projects_built"</span>: <span class="t-num">10</span></span>
+        <span class="t-line">&nbsp;&nbsp;<span class="t-key">"open_to_work"</span>: <span class="t-bool">true</span></span>
         <span class="t-line t-brace">}</span>
       </div>
     </div>
@@ -430,43 +405,35 @@
 
 <div class="stats-strip">
   <div class="stat-item reveal"><div class="stat-num">1+</div><div class="stat-label">Years Experience</div></div>
-  <div class="stat-item reveal" style="transition-delay:0.1s"><div class="stat-num">10+</div><div class="stat-label">Projects Built</div></div>
+  <div class="stat-item reveal" style="transition-delay:0.1s"><div class="stat-num">5+</div><div class="stat-label">Projects Built</div></div>
   <div class="stat-item reveal" style="transition-delay:0.2s"><div class="stat-num">4</div><div class="stat-label">Languages Mastered</div></div>
   <div class="stat-item reveal" style="transition-delay:0.3s"><div class="stat-num">∞</div><div class="stat-label">Lines of Code Written</div></div>
 </div>
 
 <section id="skills">
-  <div class="section-header reveal">
-    <span class="section-num">01</span>
-    <h2 class="section-title">Skills</h2>
-    <div class="section-line"></div>
-  </div>
+  <div class="section-header reveal"><span class="section-num">01</span><h2 class="section-title">Skills</h2><div class="section-line"></div></div>
   <div class="skills-grid">
     <div class="skill-card reveal">
-      <span class="skill-icon">🌐</span>
-      <div class="skill-name">HTML</div>
-      <p class="skill-desc">Semantic markup, accessibility, SEO-friendly structure, HTML5 APIs and modern document architecture.</p>
+      <span class="skill-icon">🌐</span><div class="skill-name">HTML</div>
+      <p class="skill-desc">Semantic markup, accessibility, SEO-friendly structure and HTML5 APIs.</p>
       <div class="skill-bar-bg"><div class="skill-bar" data-width="0.9"></div></div>
       <span class="skill-pct">90% Proficiency</span>
     </div>
     <div class="skill-card reveal" style="transition-delay:0.1s">
-      <span class="skill-icon">🎨</span>
-      <div class="skill-name">CSS</div>
-      <p class="skill-desc">Responsive layouts, animations, Flexbox &amp; Grid, custom properties, and polished UI design.</p>
+      <span class="skill-icon">🎨</span><div class="skill-name">CSS</div>
+      <p class="skill-desc">Responsive layouts, animations, Flexbox &amp; Grid, custom properties.</p>
       <div class="skill-bar-bg"><div class="skill-bar" data-width="0.85"></div></div>
       <span class="skill-pct">85% Proficiency</span>
     </div>
     <div class="skill-card reveal" style="transition-delay:0.2s">
-      <span class="skill-icon">⚡</span>
-      <div class="skill-name">JavaScript</div>
-      <p class="skill-desc">DOM manipulation, async/await, fetch API, ES6+, event-driven programming and interactive UIs.</p>
+      <span class="skill-icon">⚡</span><div class="skill-name">JavaScript</div>
+      <p class="skill-desc">DOM manipulation, async/await, fetch API, ES6+ and interactive UIs.</p>
       <div class="skill-bar-bg"><div class="skill-bar" data-width="0.8"></div></div>
       <span class="skill-pct">80% Proficiency</span>
     </div>
     <div class="skill-card reveal" style="transition-delay:0.3s">
-      <span class="skill-icon">☕</span>
-      <div class="skill-name">Java</div>
-      <p class="skill-desc">OOP principles, data structures, algorithms, backend logic and building robust server-side applications.</p>
+      <span class="skill-icon">☕</span><div class="skill-name">Java</div>
+      <p class="skill-desc">OOP principles, data structures, algorithms and backend logic.</p>
       <div class="skill-bar-bg"><div class="skill-bar" data-width="0.3"></div></div>
       <span class="skill-pct">30% Proficiency</span>
     </div>
@@ -474,24 +441,15 @@
 </section>
 
 <section id="projects">
-  <div class="section-header reveal">
-    <span class="section-num">02</span>
-    <h2 class="section-title">Projects</h2>
-    <div class="section-line"></div>
-  </div>
+  <div class="section-header reveal"><span class="section-num">02</span><h2 class="section-title">Projects</h2><div class="section-line"></div></div>
   <div class="projects-grid">
 
     <div class="project-card featured reveal">
       <div>
         <div class="project-tag">Featured Project</div>
         <h3 class="project-title">E-Commerce Storefront</h3>
-        <p class="project-desc">A fully responsive online store with product filtering, cart management, and checkout flow. Focused on performance and smooth user experience across all devices.</p>
-        <div class="project-tech">
-          <span class="tech-badge">HTML</span>
-          <span class="tech-badge">CSS</span>
-          <span class="tech-badge">JavaScript</span>
-          <span class="tech-badge">LocalStorage API</span>
-        </div>
+        <p class="project-desc">A fully responsive online store with product filtering, cart management, real product images and checkout flow.</p>
+        <div class="project-tech"><span class="tech-badge">HTML</span><span class="tech-badge">CSS</span><span class="tech-badge">JavaScript</span><span class="tech-badge">LocalStorage</span></div>
         <a href="my portfolio/ecommerce.html" class="project-link">View Project →</a>
       </div>
       <div class="project-visual pv-1"><div class="pv-num">01</div></div>
@@ -501,12 +459,8 @@
       <div class="project-visual pv-2" style="margin-bottom:32px;aspect-ratio:16/7"><div class="pv-num">02</div></div>
       <div class="project-tag">Web App</div>
       <h3 class="project-title">Task Manager Dashboard</h3>
-      <p class="project-desc">Interactive task management app with drag-and-drop, priority tags, and local data persistence.</p>
-      <div class="project-tech">
-        <span class="tech-badge">JavaScript</span>
-        <span class="tech-badge">CSS Grid</span>
-        <span class="tech-badge">HTML5</span>
-      </div>
+      <p class="project-desc">Kanban board with real-time clock, add/edit/delete tasks, priority levels and progress tracking.</p>
+      <div class="project-tech"><span class="tech-badge">JavaScript</span><span class="tech-badge">CSS Grid</span><span class="tech-badge">HTML5</span></div>
       <a href="my portfolio/task-manager.html" class="project-link">View Project →</a>
     </div>
 
@@ -523,62 +477,39 @@
       </div>
       <div class="project-tag">UI / Auth</div>
       <h3 class="project-title">Login Page UI</h3>
-      <p class="project-desc">A sleek, secure login page with form validation, password toggle visibility, animated error states, and responsive layout for all screen sizes.</p>
-      <div class="project-tech">
-        <span class="tech-badge">HTML</span>
-        <span class="tech-badge">CSS</span>
-        <span class="tech-badge">JavaScript</span>
-        <span class="tech-badge">Form Validation</span>
-      </div>
+      <p class="project-desc">Split-screen auth page with real-time validation, password strength meter and animated transitions.</p>
+      <div class="project-tech"><span class="tech-badge">HTML</span><span class="tech-badge">CSS</span><span class="tech-badge">JavaScript</span></div>
       <a href="my portfolio/login.html" class="project-link">View Project →</a>
     </div>
 
     <div class="project-card reveal" style="transition-delay:0.3s">
       <div class="project-visual pv-4" style="margin-bottom:32px;aspect-ratio:16/7;position:relative;overflow:hidden;">
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:12px;">
-          <div style="text-align:center;">
-            <div style="font-size:28px;margin-bottom:4px;">⛅</div>
-            <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#e8ff47;line-height:1;">24°</div>
-            <div style="font-size:9px;color:#555;letter-spacing:0.1em;text-transform:uppercase;">Partly Cloudy</div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:4px;">
-            <div style="display:flex;align-items:center;gap:6px;font-size:9px;color:#555;">💧 <span>68%</span></div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:9px;color:#555;">💨 <span>12 km/h</span></div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:9px;color:#555;">👁 <span>10 km</span></div>
-          </div>
+          <div style="text-align:center;"><div style="font-size:28px;margin-bottom:4px;">⛅</div><div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#e8ff47;line-height:1;">24°</div><div style="font-size:9px;color:#555;letter-spacing:0.1em;text-transform:uppercase;">Partly Cloudy</div></div>
+          <div style="display:flex;flex-direction:column;gap:4px;"><div style="font-size:9px;color:#555;">💧 68%</div><div style="font-size:9px;color:#555;">💨 18 km/h</div></div>
         </div>
       </div>
       <div class="project-tag">API Integration</div>
       <h3 class="project-title">Weather App</h3>
-      <p class="project-desc">Real-time weather application that fetches live data via a public weather API. Features city search, temperature units toggle, and dynamic weather icons.</p>
-      <div class="project-tech">
-        <span class="tech-badge">JavaScript</span>
-        <span class="tech-badge">Fetch API</span>
-        <span class="tech-badge">OpenWeather API</span>
-        <span class="tech-badge">CSS</span>
-      </div>
+      <p class="project-desc">Real-time weather with live clock, 6-day forecast, hourly data, UV index and dynamic backgrounds.</p>
+      <div class="project-tech"><span class="tech-badge">JavaScript</span><span class="tech-badge">Fetch API</span><span class="tech-badge">CSS</span></div>
       <a href="my portfolio/weather.html" class="project-link">View Project →</a>
     </div>
 
     <div class="project-card reveal" style="transition-delay:0.4s;grid-column:span 2">
       <div class="project-visual pv-5" style="margin-bottom:32px;aspect-ratio:16/7;position:relative;overflow:hidden;">
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:4px;font-family:'DM Mono',monospace;">
-          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:8px 14px;font-size:16px;color:#e8ff47;">7</div>
-          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:8px 14px;font-size:16px;">+</div>
-          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:8px 14px;font-size:16px;color:#e8ff47;">8</div>
-          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:8px 14px;font-size:16px;">=</div>
-          <div style="background:rgba(232,255,71,0.15);border:1px solid rgba(232,255,71,0.3);border-radius:4px;padding:8px 14px;font-size:16px;color:#e8ff47;">15</div>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:6px;font-family:'DM Mono',monospace;">
+          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:8px 14px;font-size:18px;color:#e8ff47;">7</div>
+          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:8px 14px;font-size:18px;">+</div>
+          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:8px 14px;font-size:18px;color:#e8ff47;">8</div>
+          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:8px 14px;font-size:18px;">=</div>
+          <div style="background:rgba(232,255,71,0.15);border:1px solid rgba(232,255,71,0.3);border-radius:4px;padding:8px 14px;font-size:18px;color:#e8ff47;">15</div>
         </div>
       </div>
       <div class="project-tag">Utility App</div>
-      <h3 class="project-title">Calculator</h3>
-      <p class="project-desc">A fully functional calculator with standard and scientific modes, calculation history, and full keyboard support.</p>
-      <div class="project-tech">
-        <span class="tech-badge">HTML</span>
-        <span class="tech-badge">CSS</span>
-        <span class="tech-badge">JavaScript</span>
-        <span class="tech-badge">Scientific Mode</span>
-      </div>
+      <h3 class="project-title">Calculator Pro</h3>
+      <p class="project-desc">Apple-style calculator with standard and scientific modes, memory functions, full keyboard support and calculation history.</p>
+      <div class="project-tech"><span class="tech-badge">HTML</span><span class="tech-badge">CSS</span><span class="tech-badge">JavaScript</span><span class="tech-badge">Scientific Mode</span></div>
       <a href="my portfolio/calculator.html" class="project-link">View Project →</a>
     </div>
 
@@ -586,75 +517,52 @@
 </section>
 
 <section id="experience">
-  <div class="section-header reveal">
-    <span class="section-num">03</span>
-    <h2 class="section-title">Experience</h2>
-    <div class="section-line"></div>
-  </div>
+  <div class="section-header reveal"><span class="section-num">03</span><h2 class="section-title">Experience</h2><div class="section-line"></div></div>
   <div class="timeline">
     <div class="timeline-item reveal">
       <div class="tl-date">2023 — Present</div>
       <div class="tl-title">Web Developer</div>
       <div class="tl-company">Freelance / Self-Employed</div>
-      <p class="tl-desc">Building responsive websites and web applications for clients. Delivering pixel-perfect implementations from design mockups, writing clean and maintainable HTML, CSS, and JavaScript code, and ensuring cross-browser compatibility and performance optimization.</p>
+      <p class="tl-desc">Building responsive websites and web applications for clients. Delivering pixel-perfect implementations, writing clean HTML, CSS and JavaScript, ensuring cross-browser compatibility and performance optimization.</p>
     </div>
     <div class="timeline-item reveal" style="transition-delay:0.15s">
       <div class="tl-date">2022 — 2023</div>
       <div class="tl-title">Junior Developer (Trainee)</div>
       <div class="tl-company">Academic / Personal Projects</div>
-      <p class="tl-desc">Developed foundational skills through coursework and independent projects. Focused on mastering HTML, CSS, and JavaScript fundamentals while exploring Java for backend and algorithmic problem-solving.</p>
+      <p class="tl-desc">Developed foundational skills through coursework and independent projects. Mastered HTML, CSS and JavaScript fundamentals while exploring Java for backend and algorithmic problem-solving.</p>
     </div>
     <div class="timeline-item reveal" style="transition-delay:0.3s">
       <div class="tl-date">2022</div>
       <div class="tl-title">Started Coding Journey</div>
       <div class="tl-company">Self-Taught</div>
-      <p class="tl-desc">Began learning web development with HTML and CSS, quickly progressing to JavaScript and Java. Completed numerous online courses, tutorials, and personal projects that built a solid technical foundation.</p>
+      <p class="tl-desc">Began learning web development with HTML and CSS, quickly progressing to JavaScript and Java. Built numerous personal projects that established a solid technical foundation.</p>
     </div>
   </div>
 </section>
 
 <section id="contact">
-  <div class="section-header reveal">
-    <span class="section-num">04</span>
-    <h2 class="section-title">Contact</h2>
-    <div class="section-line"></div>
-  </div>
+  <div class="section-header reveal"><span class="section-num">04</span><h2 class="section-title">Contact</h2><div class="section-line"></div></div>
   <div class="contact-grid">
     <div class="reveal">
       <h3 class="contact-tagline">Let's build something <span>great</span> together.</h3>
-      <p class="contact-sub">I'm currently open to new opportunities — freelance projects, internships, or full-time roles. If you have a project that needs a dedicated developer, let's talk.</p>
+      <p class="contact-sub">Open to freelance projects, internships and full-time roles. If you have a project that needs a dedicated developer, let's talk.</p>
       <div class="contact-links">
         <a href="mailto:churchill.mgamba@email.com" class="contact-link">
-          <span class="cl-icon">✉</span>
-          <div class="cl-info"><div class="cl-label">Email</div><div class="cl-val">churchill.mgamba@email.com</div></div>
-          <span class="cl-arrow">→</span>
+          <span class="cl-icon">✉</span><div class="cl-info"><div class="cl-label">Email</div><div class="cl-val">churchill.mgamba@email.com</div></div><span class="cl-arrow">→</span>
         </a>
         <a href="https://github.com/Wheezyy2050" target="_blank" class="contact-link">
-          <span class="cl-icon">⌥</span>
-          <div class="cl-info"><div class="cl-label">GitHub</div><div class="cl-val">github.com/Wheezyy2050</div></div>
-          <span class="cl-arrow">→</span>
+          <span class="cl-icon">⌥</span><div class="cl-info"><div class="cl-label">GitHub</div><div class="cl-val">github.com/Wheezyy2050</div></div><span class="cl-arrow">→</span>
         </a>
         <a href="https://linkedin.com/in/churchillmgamba" target="_blank" class="contact-link">
-          <span class="cl-icon">◈</span>
-          <div class="cl-info"><div class="cl-label">LinkedIn</div><div class="cl-val">linkedin.com/in/churchillmgamba</div></div>
-          <span class="cl-arrow">→</span>
+          <span class="cl-icon">◈</span><div class="cl-info"><div class="cl-label">LinkedIn</div><div class="cl-val">linkedin.com/in/churchillmgamba</div></div><span class="cl-arrow">→</span>
         </a>
       </div>
     </div>
     <div class="reveal" style="transition-delay:0.2s">
       <div class="contact-form">
-        <div class="form-field">
-          <label class="form-label">Your Name</label>
-          <input class="form-input" type="text" placeholder="John Doe">
-        </div>
-        <div class="form-field">
-          <label class="form-label">Email Address</label>
-          <input class="form-input" type="email" placeholder="john@example.com">
-        </div>
-        <div class="form-field">
-          <label class="form-label">Message</label>
-          <textarea class="form-textarea" placeholder="Tell me about your project..."></textarea>
-        </div>
+        <div class="form-field"><label class="form-label">Your Name</label><input class="form-input" type="text" placeholder="John Doe"></div>
+        <div class="form-field"><label class="form-label">Email Address</label><input class="form-input" type="email" placeholder="john@example.com"></div>
+        <div class="form-field"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="Tell me about your project..."></textarea></div>
         <button class="btn-send" onclick="this.textContent='Sent ✓';setTimeout(()=>this.textContent='Send Message →',2000)">Send Message →</button>
       </div>
     </div>
@@ -667,58 +575,23 @@
 </footer>
 
 <script>
-  const cursor = document.getElementById('cursor');
-  const ring   = document.getElementById('cursorRing');
-  let mx = 0, my = 0, rx = 0, ry = 0, visible = false;
-
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx + 'px';
-    cursor.style.top  = my + 'px';
-    if (!visible) { cursor.style.opacity='1'; ring.style.opacity='1'; visible=true; }
+  const cursor=document.getElementById('cursor');
+  const ring=document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0,visible=false;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';if(!visible){cursor.style.opacity='1';ring.style.opacity='1';visible=true;}});
+  document.addEventListener('mouseleave',()=>{cursor.style.opacity='0';ring.style.opacity='0';});
+  document.addEventListener('mouseenter',()=>{cursor.style.opacity='1';ring.style.opacity='1';});
+  (function animateRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animateRing);})();
+  document.querySelectorAll('a,button,.skill-card,.project-card').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cursor.style.width='20px';cursor.style.height='20px';cursor.style.background='#fff';ring.style.width='60px';ring.style.height='60px';});
+    el.addEventListener('mouseleave',()=>{cursor.style.width='12px';cursor.style.height='12px';cursor.style.background='#e8ff47';ring.style.width='40px';ring.style.height='40px';});
   });
-
-  document.addEventListener('mouseleave', () => { cursor.style.opacity='0'; ring.style.opacity='0'; });
-  document.addEventListener('mouseenter', () => { cursor.style.opacity='1'; ring.style.opacity='1'; });
-
-  (function animateRing() {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    ring.style.left = rx + 'px';
-    ring.style.top  = ry + 'px';
-    requestAnimationFrame(animateRing);
-  })();
-
-  document.querySelectorAll('a, button, .skill-card, .project-card').forEach(el => {
-    el.addEventListener('mouseenter', () => { cursor.style.width='20px'; cursor.style.height='20px'; cursor.style.background='#fff'; ring.style.width='60px'; ring.style.height='60px'; });
-    el.addEventListener('mouseleave', () => { cursor.style.width='12px'; cursor.style.height='12px'; cursor.style.background='#e8ff47'; ring.style.width='40px'; ring.style.height='40px'; });
-  });
-
-  window.addEventListener('scroll', () => {
-    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
-  });
-
-  const revealObs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
-  const skillObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const bar = e.target.querySelector('.skill-bar');
-        if (bar) setTimeout(() => { bar.style.width = (parseFloat(bar.dataset.width) * 100) + '%'; }, 300);
-      }
-    });
-  }, { threshold: 0.3 });
-  document.querySelectorAll('.skill-card').forEach(c => skillObs.observe(c));
-
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const t = document.querySelector(a.getAttribute('href'));
-      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
-    });
-  });
+  window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);});
+  const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+  const skillObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const bar=e.target.querySelector('.skill-bar');if(bar)setTimeout(()=>{bar.style.width=(parseFloat(bar.dataset.width)*100)+'%';},300);}});},{threshold:0.3});
+  document.querySelectorAll('.skill-card').forEach(c=>skillObs.observe(c));
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});});
 </script>
 </body>
 </html>
